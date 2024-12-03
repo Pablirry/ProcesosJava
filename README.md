@@ -1,6 +1,6 @@
 # ProcesosJava
 
 ## Tabla de contenidos 
-* [Tipos de hilos](#https://github.com/Pablirry/ProcesosJava/tree/main/TiposHilos) 
+* [Tipos de hilos](#TiposHilos) 
 * [Hilos optimizado](#SyncroThreadOptimizado) 
 * [Procesos Multihilo](#ProcesosMultihilo) 
