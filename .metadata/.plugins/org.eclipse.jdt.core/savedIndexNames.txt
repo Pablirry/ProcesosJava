@@ -1,9 +1,0 @@
-INDEX VERSION 1.134+D:\Escritorio\DAM_AFA\2-DAM-1\Programacion_de_servicios_y_procesos\ProcesosJava\.metadata\.plugins\org.eclipse.jdt.core
-1569194658.index
-2885661511.index
-4223251711.index
-1897738396.index
-1097029991.index
-1865797976.index
-3663855608.index
-1091433370.index
