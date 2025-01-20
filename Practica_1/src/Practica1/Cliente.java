@@ -12,6 +12,7 @@ public class Cliente {
         String host = "localhost"; // Dirección del servidor
         int puerto = 12345;       // Puerto del servidor
 
+        // Intentar establecer una conexión con el servidor
         try (Socket socket = new Socket(host, puerto);
             BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
@@ -28,6 +29,7 @@ public class Cliente {
                 System.out.print("Tu mensaje: ");
                 mensaje = teclado.readLine();
 
+                // Si el mensaje es "salir", cerrar la conexión
                 if ("salir".equalsIgnoreCase(mensaje)) {
                     System.out.println("Cerrando conexión...");
                     break;
@@ -40,9 +42,7 @@ public class Cliente {
                 System.out.println("Servidor: " + entrada.readLine());
             }
         } catch (IOException e) {
-            System.err.println("Error en el cliente: " + e.getMessage());
+            e.printStackTrace();
         }
     }
-
-
 }

@@ -12,6 +12,7 @@ public class ServidorConcurrente {
 	public static void main(String[] args) {
         int puerto = 12345; // Puerto del servidor
 
+        // Intentar abrir un socket de servidor en el puerto especificado
         try (ServerSocket serverSocket = new ServerSocket(puerto)) {
             System.out.println("Servidor escuchando en el puerto " + puerto);
 
@@ -60,7 +61,7 @@ class ManejadorCliente implements Runnable {
             try {
                 clienteSocket.close();
             } catch (IOException e) {
-                System.err.println("No se pudo cerrar el socket del cliente: " + e.getMessage());
+                System.err.println("Error al cerrar el socket del cliente: " + e.getMessage());
             }
         }
     }
