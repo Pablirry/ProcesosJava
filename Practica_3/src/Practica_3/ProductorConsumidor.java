@@ -17,7 +17,7 @@ public class ProductorConsumidor {
                     cola.put(i);
                     System.out.println("Producido: " + i);
                     // Simular tiempo de producción
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     // Manejar la interrupción del hilo
                     Thread.currentThread().interrupt();
@@ -35,7 +35,7 @@ public class ProductorConsumidor {
                         int dato = cola.take();
                         System.out.println("Consumidor " + id + " proceso: " + dato);
                         // Simular tiempo de procesamiento
-                        Thread.sleep(150);
+                        Thread.sleep(1500);
                     } catch (InterruptedException e) {
                         // Manejar la interrupción del hilo
                         Thread.currentThread().interrupt();
