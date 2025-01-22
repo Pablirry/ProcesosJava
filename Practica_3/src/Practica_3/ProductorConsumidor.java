@@ -9,7 +9,7 @@ public class ProductorConsumidor {
         // Crear una cola con capacidad de 10 elementos
         BlockingQueue<Integer> cola = new LinkedBlockingQueue<>(10);
 
-        // Crear y arrancar el hilo productor
+        // Crear y arrancar el hilo del productor
         new Thread(() -> {
             for (int i = 0; i < 50; i++) {
                 try {
@@ -25,7 +25,7 @@ public class ProductorConsumidor {
             }
         }).start();
 
-        // Crear y arrancar los hilos consumidores
+        // Crear y arrancar los hilos de los consumidores
         for (int i = 1; i <= 3; i++) {
             int id = i;
             new Thread(() -> {
