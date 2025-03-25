@@ -1,0 +1,31 @@
+package Base;
+
+public class LectoresEscritores {
+	
+	private int lectores = 0;
+	 private boolean escribiendo = false;
+	 public synchronized void iniciarLectura() throws InterruptedException {
+	 while (escribiendo) {
+	 wait();
+	 }
+	 lectores++;
+	 }
+	 public synchronized void terminarLectura() {
+	 lectores--;
+	 if (lectores == 0) {
+	 notifyAll();
+	 }
+	 }
+	 public synchronized void iniciarEscritura() throws InterruptedException {
+	 while (escribiendo || lectores > 0) {
+	 wait();
+	 }
+	 escribiendo = true;
+	 }
+	 public synchronized void terminarEscritura() {
+	 escribiendo = false;
+	 notifyAll();
+	 }
+
+
+}

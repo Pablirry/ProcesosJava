@@ -1,0 +1,29 @@
+package Empleados;
+
+public class Lector extends Thread {
+	
+private CompartidoLectura compartido; // O CompartidoEscritura según la versión
+    
+    public Lector(CompartidoLectura compartido) {
+        this.compartido = compartido;
+    }
+    
+    @Override
+    public void run() {
+        compartido.leer();
+    }
+}
+
+public class Escritor extends Thread {
+    private CompartidoLectura compartido; // O CompartidoEscritura según la versión
+    
+    public Escritor(CompartidoLectura compartido) {
+        this.compartido = compartido;
+    }
+    
+    @Override
+    public void run() {
+        compartido.escribir();
+    }
+
+}

@@ -1,0 +1,15 @@
+package PrioridadLectura;
+
+public class MainLectura {
+	
+	public static void main(String[] args) {
+        CompartidoLectura compartido = new CompartidoLectura();
+        
+        // Prueba con múltiples lectores y escritores
+        for (int i = 0; i < 5; i++) {
+            new Lector(compartido).start();
+            new Escritor(compartido).start();
+        }
+    }
+
+}

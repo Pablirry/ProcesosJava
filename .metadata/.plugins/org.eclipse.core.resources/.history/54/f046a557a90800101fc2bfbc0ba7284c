@@ -1,0 +1,37 @@
+package PrioridadLectura;
+
+import java.util.concurrent.Semaphore;
+
+public class PrioridadLectura {
+	
+	private int lectores = 0;
+    private Semaphore sem1 = new Semaphore(1); // Protege lectores
+    private Semaphore sem2 = new Semaphore(1); // Controla acceso de escritores
+    
+    public void iniciarLectura() throws InterruptedException {
+        sem1.acquire();
+        lectores++;
+        if (lectores == 1) {
+            sem2.acquire(); // Primer lector bloquea escritores
+        }
+        sem1.release();
+    }
+    
+    public void terminarLectura() throws InterruptedException {
+        sem1.acquire();
+        lectores--;
+        if (lectores == 0) {
+            sem2.release(); // Último lector libera escritores
+        }
+        sem1.release();
+    }
+    
+    public void iniciarEscritura() throws InterruptedException {
+        sem2.acquire(); // Espera acceso exclusivo
+    }
+    
+    public void terminarEscritura() {
+        sem2.release(); // Libera para otros escritores o lectores
+    }
+
+}

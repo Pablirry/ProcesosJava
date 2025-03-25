@@ -1,0 +1,17 @@
+package Empleados;
+
+import PrioridadLectura.CompartirLectura;
+
+public class Lector extends Thread {
+	
+private CompartirLectura compartido;
+    
+    public Lector(CompartirLectura compartido) {
+        this.compartido = compartido;
+    }
+    
+    @Override
+    public void run() {
+        compartido.leer();
+    }
+}

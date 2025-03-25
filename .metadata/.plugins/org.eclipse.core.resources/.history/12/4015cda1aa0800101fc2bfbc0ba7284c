@@ -1,0 +1,15 @@
+package PrioridadEscritura;
+
+public class MainEscritura {
+	
+	public static void main(String[] args) {
+        CompartirEscritura compartido = new CompartidoEscritura();
+        
+        // Prueba con múltiples lectores y escritores
+        for (int i = 0; i < 5; i++) {
+            new Lector(compartido).start();
+            new Escritor(compartido).start();
+        }
+    }
+
+}

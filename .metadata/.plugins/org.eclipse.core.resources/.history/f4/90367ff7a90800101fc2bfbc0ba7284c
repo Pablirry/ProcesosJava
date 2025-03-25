@@ -1,0 +1,17 @@
+package PrioridadLectura;
+
+import Empleados.Lector;
+
+public class MainLectura {
+	
+	public static void main(String[] args) {
+        CompartirLectura compartido = new CompartirLectura();
+        
+        // Prueba con múltiples lectores y escritores
+        for (int i = 0; i < 5; i++) {
+            new Lector(compartido).start();
+            new Escritor(compartido).start();
+        }
+    }
+
+}

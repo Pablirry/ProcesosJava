@@ -1,0 +1,46 @@
+package PrioridadEscritura;
+
+public class PrioridadEscritura {
+	
+	private int lectores = 0;
+    private int escritoresEsperando = 0;
+    private Semaphore mutex = new Semaphore(1); // Protege lectores y escritoresEsperando
+    private Semaphore escritura = new Semaphore(1); // Controla acceso de escritores
+    private Semaphore lectura = new Semaphore(1); // Controla acceso de lectores
+    
+    public void iniciarLectura() throws InterruptedException {
+        lectura.acquire(); // Espera si hay escritores esperando
+        mutex.acquire();
+        lectores++;
+        if (lectores == 1) {
+            escritura.acquire(); // Primer lector bloquea escritores
+        }
+        mutex.release();
+        lectura.release();
+    }
+    
+    public void terminarLectura() throws InterruptedException {
+        mutex.acquire();
+        lectores--;
+        if (lectores == 0) {
+            escritura.release(); // Último lector libera escritores
+        }
+        mutex.release();
+    }
+    
+    public void iniciarEscritura() throws InterruptedException {
+        mutex.acquire();
+        escritoresEsperando++;
+        mutex.release();
+        
+        escritura.acquire(); // Espera acceso exclusivo
+        
+        mutex.acquire();
+        escritoresEsperando--;
+        mutex.release();
+    }
+    
+    public void terminarEscritura() {
+        escritura.release(); // Libera para otros escritores o lectores
+    }
+}
